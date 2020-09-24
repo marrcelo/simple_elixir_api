@@ -29,3 +29,7 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+config :simple_elixir_api, SimpleElixirApiWeb.Auth.Guardian,
+  issuer: "simple_elixir_api",
+  secret_key: "U+cICnypF7P2K7PTgU5Uf+N91Ie6WnT0/m4orc8IQQie9VCYoV0BPed3o78wu9dy"
