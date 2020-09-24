@@ -6,9 +6,25 @@ defmodule SimpleElixirApi.UsersTest do
   describe "tb_users" do
     alias SimpleElixirApi.Users.User
 
-    @valid_attrs %{first_name: "some first_name", last_name: "some last_name", nick_name: "some nick_name"}
-    @update_attrs %{first_name: "some updated first_name", last_name: "some updated last_name", nick_name: "some updated nick_name"}
-    @invalid_attrs %{first_name: nil, last_name: nil, nick_name: nil}
+    @valid_attrs %{
+      first_name: "some first_name",
+      last_name: "some last_name",
+      nick_name: "some nick_name",
+      email: "user@email.com",
+      password: "123456"
+    }
+    @update_attrs %{
+      first_name: "some updated first_name",
+      last_name: "some updated last_name",
+      nick_name: "some updated nick_name"
+    }
+    @invalid_attrs %{
+      first_name: nil,
+      last_name: nil,
+      nick_name: nil,
+      email: nil,
+      password: nil
+    }
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -21,12 +37,12 @@ defmodule SimpleElixirApi.UsersTest do
 
     test "list_tb_users/0 returns all tb_users" do
       user = user_fixture()
-      assert Users.list_tb_users() == [user]
+      assert Users.list_tb_users() == [%{user | password: nil}]
     end
 
     test "get_user!/1 returns the user with given id" do
       user = user_fixture()
-      assert Users.get_user!(user.id) == user
+      assert Users.get_user!(user.id) == %{user | password: nil}
     end
 
     test "create_user/1 with valid data creates a user" do
@@ -51,7 +67,7 @@ defmodule SimpleElixirApi.UsersTest do
     test "update_user/2 with invalid data returns error changeset" do
       user = user_fixture()
       assert {:error, %Ecto.Changeset{}} = Users.update_user(user, @invalid_attrs)
-      assert user == Users.get_user!(user.id)
+      assert %{user | password: nil} == Users.get_user!(user.id)
     end
 
     test "delete_user/1 deletes the user" do

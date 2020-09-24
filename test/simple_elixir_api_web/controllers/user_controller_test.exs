@@ -7,14 +7,16 @@ defmodule SimpleElixirApiWeb.UserControllerTest do
   @create_attrs %{
     first_name: "some first_name",
     last_name: "some last_name",
-    nick_name: "some nick_name"
+    nick_name: "some nick_name",
+    email: "user@email.com",
+    password: "123456"
   }
   @update_attrs %{
     first_name: "some updated first_name",
     last_name: "some updated last_name",
     nick_name: "some updated nick_name"
   }
-  @invalid_attrs %{first_name: nil, last_name: nil, nick_name: nil}
+  @invalid_attrs %{first_name: nil, last_name: nil, nick_name: nil, email: nil, password: nil}
 
   def fixture(:user) do
     {:ok, user} = Users.create_user(@create_attrs)
