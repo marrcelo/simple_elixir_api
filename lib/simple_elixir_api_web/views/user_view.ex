@@ -3,7 +3,7 @@ defmodule SimpleElixirApiWeb.UserView do
   alias SimpleElixirApiWeb.UserView
 
   def render("index.json", %{users: users}) do
-    %{data: render_many(users, UserView, "users.json")}
+    %{data: render_many(users, UserView, "user.json")}
   end
 
   def render("show.json", %{user: user}) do
@@ -14,7 +14,6 @@ defmodule SimpleElixirApiWeb.UserView do
     %{
       id: user.id,
       email: user.email,
-      # token: user.token,
       first_name: user.first_name,
       last_name: user.last_name,
       nick_name: user.nick_name

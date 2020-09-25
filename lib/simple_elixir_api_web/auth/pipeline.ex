@@ -1,5 +1,6 @@
 defmodule SimpleElixirApiWeb.Auth.Pipeline do
-  use Guardian.Plug.Pipeline, otp_app: :busi_api,
+  use Guardian.Plug.Pipeline,
+    otp_app: :simple_elixir_api,
     module: SimpleElixirApiWeb.Auth.Guardian,
     error_handler: SimpleElixirApiWeb.Auth.ErrorHandler
 
