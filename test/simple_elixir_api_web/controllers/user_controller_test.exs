@@ -8,13 +8,15 @@ defmodule SimpleElixirApiWeb.UserControllerTest do
     first_name: "some first_name",
     last_name: "some last_name",
     nick_name: "some nick_name",
-    email: "user@email.com",
+    email: "user1@email.com",
     password: "123456"
   }
   @update_attrs %{
     first_name: "some updated first_name",
     last_name: "some updated last_name",
-    nick_name: "some updated nick_name"
+    nick_name: "some updated nick_name",
+    email: "user2@email.com",
+    password: "1234567"
   }
   @invalid_attrs %{first_name: nil, last_name: nil, nick_name: nil, email: nil, password: nil}
 
@@ -37,7 +39,7 @@ defmodule SimpleElixirApiWeb.UserControllerTest do
   describe "create user" do
     test "renders user when data is valid", %{conn: conn} do
       conn = post(conn, Routes.user_path(conn, :create), user: @create_attrs)
-      assert %{"id" => id} = json_response(conn, 201)["data"]
+      assert %{"id" => id} = json_response(conn, 201)
 
       conn = get(conn, Routes.user_path(conn, :show, id))
 

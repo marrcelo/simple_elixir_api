@@ -13,11 +13,13 @@ defmodule SimpleElixirApi.UsersTest do
       email: "user@email.com",
       password: "123456"
     }
+
     @update_attrs %{
       first_name: "some updated first_name",
       last_name: "some updated last_name",
       nick_name: "some updated nick_name"
     }
+
     @invalid_attrs %{
       first_name: nil,
       last_name: nil,
